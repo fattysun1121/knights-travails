@@ -21,7 +21,11 @@ def knight_moves(start, destination)
 
     coordinate_queue += possible_coords
 
-    return process_coordinate(coord) if coord[0] == destination[0] && coord[1] == destination[1]
+    if coord[0] == destination[0] && coord[1] == destination[1]
+      result = process_coordinate(coord) 
+      print_result(result)
+      return result
+    end
   end
 end
 
@@ -35,4 +39,11 @@ def process_coordinate(coord)
   result
 end
 
-p knight_moves([0, 0], [3, 6])
+def print_result(result)
+  puts "You made it in #{result.length} moves!  Here's your path:"
+  result.each { |coord| p coord }
+end
+
+knight_moves([0, 0], [1, 2])
+knight_moves([0, 0], [3, 3])
+knight_moves([3, 3], [0, 0])
